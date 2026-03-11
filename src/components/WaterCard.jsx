@@ -6,7 +6,7 @@ export default function WaterCard({ onSuccess, waterRecords }) {
   const [ml, setMl] = useState(50);
   const [loading, setLoading] = useState(false);
 
-  const todayTotal = waterRecords.reduce((s, r) => s + (r['水量ml'] || 0), 0);
+  const todayTotal = waterRecords.reduce((s, r) => s + (Number(r['水量ml']) || 0), 0);
 
   const handleSubmit = async () => {
     setLoading(true);

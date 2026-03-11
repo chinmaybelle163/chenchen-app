@@ -8,12 +8,12 @@ export default function Header({ stats }) {
   const weekDays = ['周日', '周一', '周二', '周三', '周四', '周五', '周六'];
   const week = weekDays[bjTime.getUTCDay()];
 
-  const totalMilk = stats.milkRecords.reduce((s, r) => s + (r['奶量ml'] || 0), 0);
+  const totalMilk = stats.milkRecords.reduce((s, r) => s + (Number(r['奶量ml']) || 0), 0);
   const milkCount = stats.milkRecords.length;
   const foodCount = stats.foodRecords.length;
   const poopCount = stats.poopRecords.length;
-  const waterTotal = stats.waterRecords.reduce((s, r) => s + (r['水量ml'] || 0), 0);
-  const sleepMins = stats.sleepRecords.reduce((s, r) => s + (r['睡眠时长分钟'] || 0), 0);
+  const waterTotal = stats.waterRecords.reduce((s, r) => s + (Number(r['水量ml']) || 0), 0);
+  const sleepMins = stats.sleepRecords.reduce((s, r) => s + (Number(r['睡眠时长分钟']) || 0), 0);
   const sleepH = sleepMins > 0 ? (sleepMins / 60).toFixed(1) + 'h' : '—';
 
   return (
