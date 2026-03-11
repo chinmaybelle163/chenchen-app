@@ -22,7 +22,7 @@ export default function StatusCard({ onSuccess }) {
         ...(tempNum ? { 体温: tempNum } : {}),
         ...(symptom ? { 异常症状: symptom } : {}),
         ...(eval_ ? { 今日总体评价: {'良好 👍':'良好','需关注 ⚠️':'需关注'}[eval_] || eval_ } : {}),
-        ...(note ? { 备注: note } : {}),
+        ...(note ? { 玩耍活动: note } : {}),
       });
       setMood(null); setTempNormal(null); setTempValue(''); setSymptom(null); setEval(null); setNote('');
       onSuccess('今日状态记录成功 🌟');
