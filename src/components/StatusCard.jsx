@@ -18,10 +18,10 @@ export default function StatusCard({ onSuccess }) {
       const tempNum = tempNormal === true ? 36.5 : (parseFloat(tempValue) || null);
       await feishuAdd('status', {
         记录日期: getToday(),
-        ...(mood ? { 精神状态: mood.replace(/.*? /, '') } : {}),
+        ...(mood ? { 精神状态: {'😊 活泼':'活泼','😐 一般':'一般','😢 偏差':'偏差'}[mood] || mood } : {}),
         ...(tempNum ? { 体温: tempNum } : {}),
         ...(symptom ? { 异常症状: symptom } : {}),
-        ...(eval_ ? { 今日总体评价: eval_.replace(/.*? /, '') } : {}),
+        ...(eval_ ? { 今日总体评价: {'良好 👍':'良好','需关注 ⚠️':'需关注'}[eval_] || eval_ } : {}),
         ...(note ? { 备注: note } : {}),
       });
       setMood(null); setTempNormal(null); setTempValue(''); setSymptom(null); setEval(null); setNote('');
