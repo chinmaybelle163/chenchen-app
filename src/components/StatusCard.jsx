@@ -12,16 +12,19 @@ export default function StatusCard({ onSuccess }) {
   const [note, setNote] = useState('');
   const [loading, setLoading] = useState(false);
 
+  const MOOD_MAP = { '活泼 😊': '活泼', '一般 😐': '一般', '偏差 😢': '偏差' };
+  const EVAL_MAP = { '良好 👍': '良好', '需关注 ⚠️': '需关注' };
+
   const handleSubmit = async () => {
     setLoading(true);
     try {
       const tempNum = tempNormal === true ? 36.5 : (parseFloat(tempValue) || null);
       await feishuAdd('status', {
         记录日期: getToday(),
-        ...(mood ? { 精神状态: {'😊 活泼':'活泼','😐 一般':'一般','😢 偏差':'偏差'}[mood] || mood } : {}),
+        ...(mood ? { 精神状态: MOOD_MAP[mood] } : {}),
         ...(tempNum ? { 体温: tempNum } : {}),
         ...(symptom ? { 异常症状: symptom } : {}),
-        ...(eval_ ? { 今日总体评价: {'良好 👍':'良好','需关注 ⚠️':'需关注'}[eval_] || eval_ } : {}),
+        ...(eval_ ? { 今日总体评价: EVAL_MAP[eval_] } : {}),
         ...(note ? { 玩耍活动: note } : {}),
       });
       setMood(null); setTempNormal(null); setTempValue(''); setSymptom(null); setEval(null); setNote('');
@@ -37,16 +40,16 @@ export default function StatusCard({ onSuccess }) {
     <Card emoji="🌟" title="今日状态" accent="#FFF0F8">
       <SectionLabel>精神状态</SectionLabel>
       <OptionRow
-        options={['😊 活泼', '😐 一般', '😢 偏差']}
+        options={['活泼 😊', '一般 😐', '偏差 😢']}
         selected={mood} onSelect={setMood}
-        colorMap={{ '😊 活泼': '#52BE80', '😐 一般': '#F5A623', '😢 偏差': '#E74C3C' }}
+        colorMap={{ '活泼 😊': '#52BE80', '一般 😐': '#F5A623', '偏差 😢': '#E74C3C' }}
       />
 
       <SectionLabel>体温</SectionLabel>
       <div style={{ display: 'flex', gap: '12px' }}>
         {[
-          { val: true, label: '🌡️ 正常', border: '#52BE80', bg: '#E8F7EE', color: '#1E8449' },
-          { val: false, label: '🔴 不正常', border: '#E74C3C', bg: '#FDEAEA', color: '#C0392B' },
+          { val: true, label: '正常 🌡️', border: '#52BE80', bg: '#E8F7EE', color: '#1E8449' },
+          { val: false, label: '不正常 🔴', border: '#E74C3C', bg: '#FDEAEA', color: '#C0392B' },
         ].map(btn => (
           <button key={String(btn.val)} onClick={() => setTempNormal(tempNormal === btn.val ? null : btn.val)} style={{
             flex: 1, padding: '18px', borderRadius: '14px',
@@ -66,7 +69,7 @@ export default function StatusCard({ onSuccess }) {
           type="number" step="0.1"
           style={{
             width: '100%', marginTop: '12px', padding: '14px 16px',
-            border: `1.5px solid #E74C3C`, borderRadius: '12px',
+            border: '1.5px solid #E74C3C', borderRadius: '12px',
             fontSize: '17px', color: theme.text, background: theme.bg,
             outline: 'none', boxSizing: 'border-box',
           }}
