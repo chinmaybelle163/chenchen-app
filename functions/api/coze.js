@@ -12,17 +12,15 @@ export async function onRequestPost(context) {
       bot_id: '7611413960864792617',
       user: 'chenchen-app-user',
       query: message,
-      stream: false,
+      stream: true,
     }),
   });
 
-  const data = await res.json();
-  const answer = data?.messages?.find(m => m.type === 'answer')?.content;
-
-  // 临时调试：返回完整响应
-  return new Response(JSON.stringify({ answer: answer || null, debug: data }), {
+  // 直接把 Coze 的 stream 透传给前端
+  return new Response(res.body, {
     headers: {
-      'Content-Type': 'application/json',
+      'Content-Type': 'text/event-stream',
+      'Cache-Control': 'no-cache',
       'Access-Control-Allow-Origin': '*',
     },
   });
