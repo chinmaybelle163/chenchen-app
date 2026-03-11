@@ -17,9 +17,10 @@ export async function onRequestPost(context) {
   });
 
   const data = await res.json();
-  const answer = data?.messages?.find(m => m.type === 'answer')?.content || '暂时没有推荐，请重试 🙏';
+  const answer = data?.messages?.find(m => m.type === 'answer')?.content;
 
-  return new Response(JSON.stringify({ answer }), {
+  // 临时调试：返回完整响应
+  return new Response(JSON.stringify({ answer: answer || null, debug: data }), {
     headers: {
       'Content-Type': 'application/json',
       'Access-Control-Allow-Origin': '*',
