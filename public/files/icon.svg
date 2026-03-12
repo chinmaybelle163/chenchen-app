@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <!-- Background -->
+  <rect width="512" height="512" rx="100" fill="#C9A7D8"/>
+  
+  <!-- Inner soft circle -->
+  <circle cx="256" cy="256" r="200" fill="#EDD8F5"/>
+
+  <!-- Baby face -->
+  <circle cx="256" cy="245" r="120" fill="#FDE8D8"/>
+
+  <!-- Cheeks -->
+  <ellipse cx="185" cy="275" rx="30" ry="20" fill="#F5A7C7" opacity="0.6"/>
+  <ellipse cx="327" cy="275" rx="30" ry="20" fill="#F5A7C7" opacity="0.6"/>
+
+  <!-- Eyes -->
+  <ellipse cx="220" cy="230" rx="14" ry="16" fill="#3D2B3D"/>
+  <ellipse cx="292" cy="230" rx="14" ry="16" fill="#3D2B3D"/>
+  <!-- Eye shine -->
+  <circle cx="226" cy="224" r="5" fill="white"/>
+  <circle cx="298" cy="224" r="5" fill="white"/>
+
+  <!-- Smile -->
+  <path d="M218 278 Q256 310 294 278" stroke="#3D2B3D" stroke-width="5" fill="none" stroke-linecap="round"/>
+
+  <!-- Baby hair / tuft -->
+  <path d="M215 135 Q256 100 297 135" stroke="#C9A7D8" stroke-width="18" fill="none" stroke-linecap="round"/>
+  <path d="M256 125 Q256 95 256 80" stroke="#C9A7D8" stroke-width="16" fill="none" stroke-linecap="round"/>
+
+  <!-- Ears -->
+  <circle cx="136" cy="245" r="28" fill="#FDE8D8"/>
+  <circle cx="376" cy="245" r="28" fill="#FDE8D8"/>
+  <circle cx="136" cy="245" r="16" fill="#F5C0B0"/>
+  <circle cx="376" cy="245" r="16" fill="#F5C0B0"/>
+
+  <!-- Baby bottle at bottom -->
+  <rect x="218" y="360" width="76" height="50" rx="10" fill="white" opacity="0.9"/>
+  <rect x="232" y="348" width="48" height="16" rx="6" fill="#C9A7D8"/>
+  <!-- Milk level -->
+  <rect x="222" y="385" width="68" height="21" rx="0 0 10 10" fill="#F5A7C7" opacity="0.5"/>
+  <!-- Nipple -->
+  <rect x="244" y="338" width="24" height="14" rx="7" fill="#EDD8F5"/>
+</svg>
